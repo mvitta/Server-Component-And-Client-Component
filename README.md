@@ -1,3 +1,5 @@
+Small project to test state management with [useReducer()](https://react.dev/reference/react/useReducer), another react alternative to manage more complete states
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

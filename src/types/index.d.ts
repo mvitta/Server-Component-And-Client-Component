@@ -1,4 +1,6 @@
-export interface JsonPlaceHolder {
+import React from 'react'
+
+export interface Post {
   userId: number
   id: number
   title: string
@@ -6,6 +8,14 @@ export interface JsonPlaceHolder {
 }
 
 export interface ResponseAPI {
-  posts: JsonPlaceHolder[]
+  posts: Post[]
   error: string
 }
+
+type AlbumBase = Omit<Post, 'body'>
+
+type HtmlAttributesWithoutId = Omit<React.HtmlHTMLAttributes<HTMLElement>, 'id'>
+
+export type Album = AlbumBase & HtmlAttributesWithoutId
+
+export type PropsAlbum = Album

@@ -12,6 +12,10 @@ export interface ResponseAPI {
   error: string
 }
 
+export interface PropsAlbumList extends React.ComponentProps<'section'> {
+  albums: AlbumBase[]
+}
+
 type AlbumBase = Omit<Post, 'body'>
 
 type HtmlAttributesWithoutId = Omit<React.HtmlHTMLAttributes<HTMLElement>, 'id'>
@@ -19,3 +23,9 @@ type HtmlAttributesWithoutId = Omit<React.HtmlHTMLAttributes<HTMLElement>, 'id'>
 export type Album = AlbumBase & HtmlAttributesWithoutId
 
 export type PropsAlbum = Album
+
+export interface PropsPagination {
+  postsPerPage: number
+  totalPosts: number
+  paginate: (pageNumber: number) => void
+}

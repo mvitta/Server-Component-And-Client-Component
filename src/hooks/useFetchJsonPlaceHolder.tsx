@@ -12,7 +12,7 @@ export default function useFetchPlaceHolder(): [ResponseAPI, boolean] {
     async function fetchPlaceHolder() {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL_JSON_PLACEHOLDER}/posts-`,
+          `${process.env.NEXT_PUBLIC_BASE_URL_JSON_PLACEHOLDER}/posts`,
           {
             cache: 'no-store',
           }
@@ -24,20 +24,24 @@ export default function useFetchPlaceHolder(): [ResponseAPI, boolean] {
           )
         }
         const json: Post[] = await response.json()
-        dispatch({ type: 'load', arrayPost: json, error: null })
-        setLoading(false)
+        dispatch({
+          type: 'load',
+          payload: json,
+        })
+
         messageSuccess(response)
+        setLoading(false)
+        console.log('try')
       } catch (error) {
         if (error instanceof Error) {
           dispatch({
             type: 'error_load',
             error: `Opps.. ${error.name} - ${error.message}`,
           })
-          setLoading(false)
           messageError(error)
+          setLoading(true)
+          console.log('catch')
         }
-      } finally {
-        setLoading(false)
       }
     }
 
